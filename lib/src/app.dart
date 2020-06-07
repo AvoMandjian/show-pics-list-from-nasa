@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MyApp extends StatefulWidget {
   @override
@@ -7,11 +9,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int counter = 1;
+  String url = 'https://jsonplaceholder.typicode.com/photos/1';
 
-  void fetchImage() {
-    setState(() {
-      counter++;
-    });
+  Future<void> fetchImage() async {
+    var response = await http.get(url);
+    var body = response.body;
+    print(body);
+    var decodedBody = jsonDecode(body);
+    print(decodedBody['url']);
+    print(decodedBody['title']);
   }
 
   @override

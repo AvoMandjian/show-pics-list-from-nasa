@@ -8,6 +8,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int counter = 1;
 
+  void fetchImage() {
+    setState(() {
+      counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,11 +34,7 @@ class _MyAppState extends State<MyApp> {
           title: Text('NASA Astronomy Picture of the Day'),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              counter++;
-            });
-          },
+          onPressed: fetchImage,
           child: Icon(Icons.add),
         ),
       ),

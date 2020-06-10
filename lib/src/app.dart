@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http show get;
 import 'dart:convert';
@@ -11,12 +13,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int counter = 0;
+  int counter;
+  int day;
+  int month;
+  int year;
+  Random range = Random();
   List<ImageModel> images = [];
 
   Future<void> fetchImage() async {
-    counter++;
-    String url = 'https://jsonplaceholder.typicode.com/photos/$counter';
+    day = Random().nextInt(27) + 1;
+    month = Random().nextInt(11) + 1;
+    year = Random().nextInt(24) + 1996;
+    String url =
+        'https://api.nasa.gov/planetary/apod?api_key=EdFoey2wS4yeNEbpn9unZPWIbdBHKGhoa5nnQh85&date=$year-$month-$day';
     var response = await http.get(url);
     var body = json.decode(response.body);
     print(body);
@@ -31,6 +40,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         body: ImageList(
+          day: day,
+          month: month,
+          year: year,
           images: images,
         ),
         appBar: AppBar(

@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
 import '../models/image_model.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ImageList extends StatelessWidget {
+  final int day;
+  final int month;
+  final int year;
+
   final List<ImageModel> images;
-  ImageList({this.images});
+  ImageList({this.images, @required this.day, this.month, this.year});
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: images.length,
       itemBuilder: (context, int index) {
-        return BuildImage(images: images[index]);
+        return BuildImage(
+          images: images[index],
+          day: day,
+          year: year,
+          month: month,
+        );
       },
     );
   }
 }
 
 class BuildImage extends StatelessWidget {
-  const BuildImage({
-    Key key,
-    @required this.images,
-  }) : super(key: key);
+  final int day;
+  final int month;
+  final int year;
+  const BuildImage(
+      {Key key,
+      @required this.images,
+      @required this.day,
+      this.month,
+      this.year})
+      : super(key: key);
 
   final images;
 
@@ -32,7 +48,19 @@ class BuildImage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(images.url),
+          Text('$day/$month/$year'),
+          Image.network(
+            images.url,
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                  child: SpinKitFadingFour(
+                color: Colors.redAccent[400],
+                size: 100,
+              ));
+            },
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(images.title),

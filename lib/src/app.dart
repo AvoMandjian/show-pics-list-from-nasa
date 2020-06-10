@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     var response = await http.get(url);
     var body = json.decode(response.body);
     var imageModel = ImageModel.fromJson(body);
+    // fetching json data from NASA
 
     setState(() {
       images.add(imageModel);
@@ -44,14 +45,8 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
+    // adding the image with info to the list and autoscrolling
   }
-
-  // Future scroll() async {
-  //   Future.delayed(Duration(seconds: 4));
-  //   scrollController.animateTo(scrollController.position.maxScrollExtent * 2,
-  //       duration: Duration(milliseconds: 1000), curve: Curves.bounceOut);
-  //   print(scrollController.position.maxScrollExtent);
-  // }
 
   @override
   Widget build(BuildContext context) {

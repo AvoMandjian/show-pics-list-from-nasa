@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http show get;
 import 'dart:convert';
+import './Widgets/image_list.dart';
+
+import 'package:show_pics_list/src/models/image_model.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -8,33 +11,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int counter = 1;
-  String url = 'https://jsonplaceholder.typicode.com/photos/1';
+  int counter = 0;
+  List<ImageModel> images = [];
 
   Future<void> fetchImage() async {
+    counter++;
+    String url = 'https://jsonplaceholder.typicode.com/photos/$counter';
     var response = await http.get(url);
-    var body = response.body;
+    var body = json.decode(response.body);
     print(body);
-    var decodedBody = jsonDecode(body);
-    print(decodedBody['url']);
-    print(decodedBody['title']);
+    var imageModel = ImageModel.fromJson(body);
+    setState(() {
+      images.add(imageModel);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          padding: EdgeInsets.only(bottom: 10.0),
-          child: Center(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Text('$counter'),
-                ),
-              ],
-            ),
-          ),
+        body: ImageList(
+          images: images,
         ),
         appBar: AppBar(
           title: Text('NASA Astronomy Picture of the Day'),

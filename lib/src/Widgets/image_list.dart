@@ -64,7 +64,7 @@ class BuildImage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(images.date),
+            SelectableText(images.date),
             Image.network(
               images.url,
               loadingBuilder: (BuildContext context, Widget child,
@@ -79,7 +79,7 @@ class BuildImage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: Text(images.title),
+              child: SelectableText(images.title),
             ),
           ],
         ),

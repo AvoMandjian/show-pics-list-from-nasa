@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int day;
+  int day = 0;
   int month;
   int year;
   Random range = Random();

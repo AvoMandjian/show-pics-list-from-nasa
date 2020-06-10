@@ -2,23 +2,37 @@ import 'package:flutter/material.dart';
 import '../models/image_model.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class ImageList extends StatelessWidget {
+class ImageList extends StatefulWidget {
   final int day;
   final int month;
   final int year;
+  final ScrollController scrollController;
 
   final List<ImageModel> images;
-  ImageList({this.images, @required this.day, this.month, this.year});
+  ImageList({
+    this.images,
+    @required this.day,
+    this.month,
+    this.year,
+    this.scrollController,
+  });
+
+  @override
+  _ImageListState createState() => _ImageListState();
+}
+
+class _ImageListState extends State<ImageList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: images.length,
+      controller: widget.scrollController,
+      itemCount: widget.images.length,
       itemBuilder: (context, int index) {
         return BuildImage(
-          images: images[index],
-          day: day,
-          year: year,
-          month: month,
+          images: widget.images[index],
+          day: widget.day,
+          year: widget.year,
+          month: widget.month,
         );
       },
     );
@@ -48,7 +62,7 @@ class BuildImage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('$day/$month/$year'),
+          Text(images.date),
           Image.network(
             images.url,
             loadingBuilder: (BuildContext context, Widget child,

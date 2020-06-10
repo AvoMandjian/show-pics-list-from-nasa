@@ -1,11 +1,11 @@
 class ImageModel {
-  int id;
+  String date;
   String url;
   String title;
-  ImageModel({this.id, this.url, this.title});
+  ImageModel({this.date, this.url, this.title});
 
   ImageModel.fromJson(Map parsedJson) {
-    id = parsedJson['id'];
+    date = parsedJson['date'];
     url = parsedJson['url'];
     title = parsedJson['title'];
   }

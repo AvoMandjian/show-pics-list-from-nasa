@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http show get;
 import 'dart:convert';
 import './Widgets/image_list.dart';
 
-import 'package:show_pics_list/src/models/image_model.dart';
+import 'package:nasa_astronomy_picture_of_the_day/src/models/image_model.dart';
 
 class MyApp extends StatefulWidget {
   @override

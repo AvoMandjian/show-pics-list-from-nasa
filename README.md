@@ -1,4 +1,4 @@
-# show_pics_list
+# nasa_astronomy_picture_of_the_day
 
 add list of new random images from NASA Astronomy pic of the day from 1996 till 2019
 

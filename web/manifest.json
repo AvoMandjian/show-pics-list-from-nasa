@@ -1,6 +1,6 @@
 {
-    "name": "show_pics_list",
-    "short_name": "show_pics_list",
+    "name": "nasa_astronomy_picture_of_the_day",
+    "short_name": "nasa_astronomy_picture_of_the_day",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

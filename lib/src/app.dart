@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http show get;
 import 'dart:convert';
 import './Widgets/image_list.dart';
-import 'dart:io';
 import './models/image_model.dart';
 
 class MyApp extends StatefulWidget {

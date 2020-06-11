@@ -71,10 +71,13 @@ class BuildImage extends StatelessWidget {
                   ImageChunkEvent loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
-                    child: SpinKitFadingFour(
-                  color: Colors.redAccent[400],
-                  size: 100,
-                ));
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes
+                        : null,
+                  ),
+                );
               },
             ),
             Padding(

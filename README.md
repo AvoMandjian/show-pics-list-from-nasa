@@ -1,8 +1,12 @@
 # nasa_astronomy_picture_of_the_day
 
-add list of new random images from NASA Astronomy pic of the day from 1996 till 2019
+add list of random images from NASA Astronomy pic of the day from 1996 till 2019, using NASA APOD
 
-visit https://nasa-astronomy-picture-am.web.app/ to check the WebApp
+App Demo.
+https://youtu.be/LUfpRBpmTjw
+
+Check the WebApp.
+https://nasa-astronomy-picture-am.web.app
 
 ## Getting Started
 
